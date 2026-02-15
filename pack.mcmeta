@@ -1,0 +1,13 @@
+{
+    "pack": {
+        "id": "fusion_evo",
+        "pack_format": 15,
+        "description": "This mod Adds Osmosian's Ie Kevin Levin and The Biomnitrix  into The alien evo addon",
+        "version": "1.0.0"
+    },
+    "dependencies": {
+        "common": {},
+        "fabric": {},
+        "forge": {}
+    }
+}

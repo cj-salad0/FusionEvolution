@@ -1,0 +1,28 @@
+modLoader="lowcodefml"
+showAsResourcePack = false
+loaderVersion="[47,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="fusion_evo"
+version="1.0.0"
+logoFile = "logo.png"
+logoBlur = false
+displayName="Fusion Evolution"
+description='''
+This mod Adds Osmosian's Ie Kevin Levin and The Biomnitrix  into The alien evo addon
+'''
+
+[[dependencies.fusion_evo]]
+modId = "palladium"
+mandatory = true
+versionRange = "[4.4.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.fusion_evo]]
+modId = "alienevo"
+mandatory = true
+versionRange = "[1.1.2,)"
+ordering = "NONE"
+side = "BOTH"

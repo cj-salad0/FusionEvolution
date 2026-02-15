@@ -1,0 +1,13 @@
+{
+    "schemaVersion": 1,
+    "authors": [
+        "CjSalad0"
+    ],
+    "environment": "*",
+    "id": "fusion_evo",
+    "version": "1.0.0",
+    "name": "Fusion Evolution",
+    "description": "This mod Adds Osmosian's Ie Kevin Levin and The Biomnitrix  into The alien evo addon",
+    "icon": "logo.png",
+    "license": "All rights reserved"
+}
