@@ -10,12 +10,12 @@
             "type": "palladium:dummy",
             "icon": "minecraft:blaze_rod",
             "title": "Energy Absorbtion",
-            "bar_color": "blue",
+            "bar_color": "light_blue",
             "hidden": false,
             "hidden_in_bar": false,
-            "list_index": -1,
+            "list_index": 0,
             "gui_position": "null",
-            "description": "You can absorb redstone dust, flames, or palladium beam attacks (absorbing beams reduces the damage taken)",
+            "description": "You can absorb redstone dust, flames, or palladium beam attacks (bs)",
             "conditions": {
                 "enabling" : [
                     
@@ -25,11 +25,39 @@
                      "key_type": "key_bind",
                     "needs_empty_hand": false,
                     "allow_scrolling_when_crouching": true
-                  }
+                     }
                 ] 
 
             }
 
+        }, 
+        
+        "Matter Absorb": {
+            "type": "palladium:aim",
+            "icon": "minecraft:hopper",
+            "title": "Matter Absorb",
+            "bar_color": "yellow",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 1,
+            "gui_position": "null",
+            "description": "Absorb material of a block",
+            "time": 10,
+            "arm": "main_arm",
+            "conditions": {
+                "enabling": [                
+                    
+                {
+                    "type": "palladium:action",
+                    "cooldown": 0,
+                    "key_type": "key_bind",
+                    "needs_empty_hand": false,
+                    "allow_scrolling_when_crouching": true
+                }
+            ]
+
+            }
         }
+
     }
 }
