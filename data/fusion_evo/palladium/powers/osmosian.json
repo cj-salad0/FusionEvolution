@@ -4,6 +4,13 @@
     "background": "minecraft:textures/block/anvil.png",
     "icon": "minecraft:wither_skeleton_skull",
     "gui_display_type": "tree",
+
+    "energy_bars": {
+   "exhaustion_bar": {
+       "max": 100,
+       "color": "#fc8803"
+   }
+},
     "abilities": {
 
         "Energy Absorb": {
@@ -29,8 +36,14 @@
                 ] 
 
             }
+            
 
         }, 
+
+        "energy_bar_usage": {
+        "energy_bar": "exhaustion_bar",
+        "amount": 10
+        },
         
         "Matter Absorb": {
             "type": "palladium:aim",
@@ -57,6 +70,7 @@
             ]
 
             }
+}
         }
 
     }
