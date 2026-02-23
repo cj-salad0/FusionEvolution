@@ -39,11 +39,6 @@
             
 
         }, 
-
-        "energy_bar_usage": {
-        "energy_bar": "exhaustion_bar",
-        "amount": 10
-        },
         
         "Matter Absorb": {
             "type": "palladium:aim",
