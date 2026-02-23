@@ -6,7 +6,7 @@
     "gui_display_type": "tree",
 
     "energy_bars": {
-   "exhaustion_bar": {
+       "exhaustion_bar": {
        "max": 100,
        "color": "#fc8803"
    }
@@ -72,6 +72,6 @@
             }
 }
         }
-
-    }
 }
+
+    
