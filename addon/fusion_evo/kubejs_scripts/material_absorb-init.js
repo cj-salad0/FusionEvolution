@@ -141,7 +141,7 @@ global.os_materialIndex = () => {
         
             function(objectID){
 
-                for (const element of this.gameObjectIDMappings) {
+                for (const element of this.keyWords) {
 
                     // check if objectID contains the current keyword if it does
                     // add the objectID and the following material of the current keyword
