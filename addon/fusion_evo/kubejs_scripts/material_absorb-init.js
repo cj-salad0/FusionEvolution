@@ -116,6 +116,27 @@ global.ironKW = keyWordMapping("iron", iron_mat)
 global.stoneKW = keyWordMapping("stone", stone_mat)
 
 
+global.woodTags = {
+
+    material: wood_mat,
+    tags: [
+        
+            "#minecraft:wooden_fences", 
+        
+            "#minecraft:wooden_buttons", 
+            
+            "#minecraft:wooden_doors",
+
+            "#minecraft:wooden_slabs",
+
+            "#minecraft:wooden_trapdors",
+            
+            "#minecraft:logs"
+
+          ]
+}
+
+
 //The main materialIndex for the Powerset
 // be generated so easily on certain events
 // that return a GameObject I can just quickly see if it 
