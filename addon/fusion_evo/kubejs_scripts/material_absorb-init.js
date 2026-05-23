@@ -53,8 +53,11 @@
 
 }*/
 
-
-global.os_initializeMaterial = (name, toolDurability, armourBuff, attackBuff, propertyFunction) => {
+// Factory Method of Creating a Material Type
+// WHen you absorb a material you could get an armour
+// or attack buff, and speical interactions when you hit someone,
+// someone hits you, or take fall damage
+global.os_initializeMaterial = (name, toolDurability, armourBuff, attackBuff, onHitProperty, onAttackProperty, onFallProperty) => {
 
     return {
 
@@ -67,7 +70,11 @@ global.os_initializeMaterial = (name, toolDurability, armourBuff, attackBuff, pr
 
         attackBuff: attackBuff,
 
-        specialProperties: propertyFunction || function(){ return; }
+        onHit: onHitProperty || function(){ return; },
+
+        onAttack: onAttackProperty || function(){ return; },
+
+        onFall: onFallProperty || function(){ return; }
 
     };
 
@@ -104,6 +111,7 @@ global.keyWordMapping = (keyWord, material) => {
     };
 };
 
+
 // Current Keywords and material Assignment
 global.plankKW = keyWordMapping("plank", wood_mat)
 
@@ -116,25 +124,44 @@ global.ironKW = keyWordMapping("iron", iron_mat)
 global.stoneKW = keyWordMapping("stone", stone_mat)
 
 
-global.woodTags = {
 
-    material: wood_mat,
-    tags: [
-        
-            "#minecraft:wooden_fences", 
-        
-            "#minecraft:wooden_buttons", 
-            
-            "#minecraft:wooden_doors",
 
-            "#minecraft:wooden_slabs",
+// Factory Method to create a material Mapping
+// tags and keywords are string arrays currently I am only going
+// to use tags might use keyWords as specific objects
+global.materialMapping = (material, tags, keyWords) => {
 
-            "#minecraft:wooden_trapdors",
-            
-            "#minecraft:logs"
 
-          ]
+    return {
+
+        material: material,
+
+        tags: tags || [],
+
+        keyWords: keyWords || []
+
+    }
 }
+
+
+
+
+
+// *** Defining Wood Material Mappings ***
+let woodTags = [ "#minecraft:wooden_fences", 
+        
+                 "#minecraft:wooden_buttons", 
+            
+                 "#minecraft:wooden_doors",
+
+                 "#minecraft:wooden_slabs",
+
+                 "#minecraft:wooden_trapdors",
+            
+                 "#minecraft:logs"]
+
+
+global.woodMappings(wood_mat, woodTags)
 
 
 //The main materialIndex for the Powerset
@@ -146,11 +173,9 @@ global.os_materialIndex = () => {
     
     return {
         
-        keyWords: [plankKW, logKW, ironKW, stoneKW],
+        mappings: [woodMappings],
 
         gameObjectIDMappings: [],
-
-        definedMaterials: [iron_mat, stone_mat, wood_mat],
 
         largeAbsorbIDs: [],
 
@@ -159,18 +184,26 @@ global.os_materialIndex = () => {
         smallAbsorbIDs: [],
 
         createMappings: 
-        
-            function(objectID){
 
-                for (const element of this.keyWords) {
+            // Expects a item object from minecraft
+            // this is supposed to be used on load to map
+            // each itemID to a material
+            function(gameItem){
 
-                    // check if objectID contains the current keyword if it does
-                    // add the objectID and the following material of the current keyword
-                    // use the keyWordMapping Factory but instead pass the objectID as the keyword and append
-                    // it to the gameObjectIDMappings array so it makes a direct mapping between the objectID and the material
-                    // also determine based on the type it is like tool or block depends on if the
-                    // id gets addedd to large, med or small Absorb ID's
-                }
+                for (const mapping of this.mappings) {
+
+                    for(const tag in mapping.tags){
+
+                        if(gameItem.hasTag(tag)){
+
+                            let newMapping = global.keyWordMapping(gameItem.id, mapping.material);
+
+                            this.gameObjectIDMappings.push(newMapping);
+                        };
+                    };
+
+
+                };
 
             }
     };
