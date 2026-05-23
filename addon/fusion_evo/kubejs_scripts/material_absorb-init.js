@@ -85,11 +85,11 @@ global.os_initializeMaterial = (name, toolDurability, armourBuff, attackBuff, on
 
 
 
-global.iron_mat = os_initializeMaterial("iron", 100, 10, 5)
+global.iron_mat = global.os_initializeMaterial("iron", 100, 10, 5)
 
-global.stone_mat = os_initializeMaterial("stone", 200, 5, 3)
+global.stone_mat = global.os_initializeMaterial("stone", 200, 5, 3)
 
-global.wood_mat = os_initializeMaterial("wood", 50, 3, 2)
+global.wood_mat = global.os_initializeMaterial("wood", 50, 3, 2)
 
 
 // this will store all of the dictionaries 
@@ -102,9 +102,8 @@ global.wood_mat = os_initializeMaterial("wood", 50, 3, 2)
 // and assign it a material
 global.keyWordMapping = (keyWord, material) => {
 
-    return 
-    {
-        keyword: keyWord
+    return {
+        keyword: keyWord,
 
         material: material
 
@@ -161,7 +160,7 @@ let woodTags = [ "#minecraft:wooden_fences",
                  "#minecraft:logs"]
 
 
-global.woodMappings(wood_mat, woodTags)
+global.woodMappings = global.materialMapping(wood_mat, woodTags)
 
 
 //The main materialIndex for the Powerset
