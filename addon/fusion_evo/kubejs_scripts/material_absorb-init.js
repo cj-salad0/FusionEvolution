@@ -38,6 +38,8 @@
 
 }*/
 
+import { $AlwaysTrueTest } from "packages/net/minecraft/world/level/levelgen/structure/templatesystem/$AlwaysTrueTest";
+
 
 /*global.os_materialStat={
 
@@ -112,15 +114,15 @@ global.keyWordMapping = (keyWord, material) => {
 
 
 // Current Keywords and material Assignment
-global.plankKW = keyWordMapping("plank", wood_mat)
+global.plankKW = global.keyWordMapping("plank", wood_mat)
 
-global.woodKW = keyWordMapping("wood", wood_mat)
+global.woodKW = global.keyWordMapping("wood", wood_mat)
 
-global.logKW = keyWordMapping("log", wood_mat)
+global.logKW = global.keyWordMapping("log", wood_mat)
 
-global.ironKW = keyWordMapping("iron", iron_mat)
+global.ironKW = global.keyWordMapping("iron", iron_mat)
 
-global.stoneKW = keyWordMapping("stone", stone_mat)
+global.stoneKW = global.keyWordMapping("stone", stone_mat)
 
 
 
@@ -147,17 +149,17 @@ global.materialMapping = (material, tags, keyWords) => {
 
 
 // *** Defining Wood Material Mappings ***
-let woodTags = [ "#minecraft:wooden_fences", 
+let woodTags = [ "minecraft:wooden_fences", 
         
-                 "#minecraft:wooden_buttons", 
+                 "minecraft:wooden_buttons", 
             
-                 "#minecraft:wooden_doors",
+                 "minecraft:wooden_doors",
 
-                 "#minecraft:wooden_slabs",
+                 "minecraft:wooden_slabs",
 
-                 "#minecraft:wooden_trapdors",
+                 "minecraft:wooden_trapdors",
             
-                 "#minecraft:logs"]
+                 "minecraft:logs"]
 
 
 global.woodMappings = global.materialMapping(wood_mat, woodTags)
@@ -187,20 +189,27 @@ global.os_materialIndex = () => {
             // Expects a item object from minecraft
             // this is supposed to be used on load to map
             // each itemID to a material
-            function(gameItem){
+            function(itemID, tags){
+
+                let foundMapping = false
 
                 for (const mapping of this.mappings) {
 
-                    for(const tag in mapping.tags){
+                    for(const tag of tags){
 
-                        if(gameItem.hasTag(tag)){
+                        let tagStr = tag.toString();
 
-                            let newMapping = global.keyWordMapping(gameItem.id, mapping.material);
+                        if(mapping.tags.includes(tagStr)){
 
-                            this.gameObjectIDMappings.push(newMapping);
-                        };
+                            this.gameObjectIDMappings.push(global.keyWordMapping(itemID, mapping.material))
+                            foundMapping = true;
+                            break;
+                        }
                     };
 
+                    if(foundMapping){
+                        break;
+                    }
 
                 };
 

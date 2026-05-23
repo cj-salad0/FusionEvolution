@@ -13,11 +13,5 @@ PlayerEvents.chat(event => {
 
     let player = event.getPlayer()
 
-    
 
-    for(const item in Items){
-
-        item.get
-
-    }
 })
