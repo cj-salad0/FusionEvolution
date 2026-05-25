@@ -114,15 +114,15 @@ global.keyWordMapping = (keyWord, material) => {
 
 
 // Current Keywords and material Assignment
-global.plankKW = global.keyWordMapping("plank", wood_mat)
+global.plankKW = global.keyWordMapping("plank", global.wood_mat)
 
-global.woodKW = global.keyWordMapping("wood", wood_mat)
+global.woodKW = global.keyWordMapping("wood", global.wood_mat)
 
-global.logKW = global.keyWordMapping("log", wood_mat)
+global.logKW = global.keyWordMapping("log", global.wood_mat)
 
-global.ironKW = global.keyWordMapping("iron", iron_mat)
+global.ironKW = global.keyWordMapping("iron", global.iron_mat)
 
-global.stoneKW = global.keyWordMapping("stone", stone_mat)
+global.stoneKW = global.keyWordMapping("stone", global.stone_mat)
 
 
 
@@ -162,7 +162,7 @@ let woodTags = [ "minecraft:wooden_fences",
                  "minecraft:logs"]
 
 
-global.woodMappings = global.materialMapping(wood_mat, woodTags)
+global.woodMappings = global.materialMapping(global.wood_mat, woodTags)
 
 
 //The main materialIndex for the Powerset
@@ -174,7 +174,7 @@ global.os_materialIndex = () => {
     
     return {
         
-        mappings: [woodMappings],
+        mappings: [global.woodMappings],
 
         gameObjectIDMappings: [],
 

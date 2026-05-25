@@ -3,14 +3,15 @@ let materialDatabase = global.os_materialIndex()
 ServerEvents.loaded(event =>{ 
 
     // This is how we get every item
-    // basically I am getting the ingrient of all by using '*'
+    // basically I am looking at the regiserty and getting every typeID
+    // and converting it to a JavaScript array
 
-    let allItems = Ingredient.of("*").getItems()
+    let allItems = Utils.registry('item').getTypeIds().toArray()
 
 
-    allItems.forEach(item => {
+    allItems.forEach(id => {
 
-        let itemID = item.id 
+        let itemID = Item.of(id)
 
         let tags = item.getTags().toArray();
 
@@ -18,10 +19,5 @@ ServerEvents.loaded(event =>{
     
         
     });
-
-    for(mapping of  materialDatabase.gameObjectIDMappings){
-
-        console.log(mapping.keyWord +  "| material: " +  mapping.material.name)
-    }
 
 })
