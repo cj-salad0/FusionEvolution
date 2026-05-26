@@ -121,6 +121,20 @@ repositories {
     // flatDir {
     //     dir 'libs'
     // }
+
+    maven { url = 'https://maven.minecraftforge.net' }
+    mavenCentral()
+    maven {
+        url = "https://api.modrinth.com/maven"
+        content {
+            includeGroup "maven.modrinth"
+        }
+    }
+
+    // ✨ THE DEFINITIVE REPOSITORY LINK FOR CURSEFORGE
+    maven { url = "https://cursemaven.com" }
+
+
 }
 
 dependencies {
@@ -141,7 +155,8 @@ dependencies {
     // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
     // The group id is ignored when searching -- in this case, it is "blank"
     // implementation fg.deobf("blank:coolmod-${mc_version}:${coolmod_version}")
-
+    implementation fg.deobf("maven.modrinth:threetag-palladium:4.5.1+1.20.1-forge")
+    implementation fg.deobf("curse.maven:alienevo-1222749:7142143")
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
